@@ -12,9 +12,10 @@
         // 郵便番号から住所を検索するコールバック関数
         $scope.searchAddress = function (zip) {
             // すでに住所がうまっていたらなにもしない
-            if ($scope.user.address.length !== 0) {
+            if ($scope.user.address && $scope.user.address.length !== 0) {
                 return;
             }
+            zip = zip.replace(/-/, '');
             // 郵便番号が7桁じゃなければなにもしない
             if (zip.length !== 7) {
                 return;

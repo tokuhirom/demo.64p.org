@@ -1,0 +1,21 @@
+<h2>エントリー管理画面</h2>
+
+<nav>
+  <a href="#/entry/create">エントリー追加</a>
+</nav>
+
+<table class="table table-hover table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>&nbsp;</th>
+  </tr>
+  <tr ng-repeat="entry in entries">
+    <td><a href="#/entry/{{entry.id}}">{{entry.id}}</a></td>
+    <td>{{entry.title}}</td>
+    <td><button class="btn btn-danger" ng-click="remove(entry.id)">削除</button></td>
+  </tr>
+</table>
+
+<button class="btn btn-default btn-large btn-block" ng-show="has_next" ng-click="readMore()">もっとミルミル</button>
+

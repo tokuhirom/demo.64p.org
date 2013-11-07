@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="signupApp">
+  <head>
+    <title>会員登録フォーム - AngularJSデモ</title>
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css' />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
+    <script type="text/javascript" src="../javascripts/signupApp.js"></script>
+    <style>
+      .demo {
+        width: 640px;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 4px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="./">Angular Demos</a>
+          </div>
+      </nav>
+
+      <div class="row">
+        <div class="col-md-12">
+
+          <h1>会員登録フォームのデモ</h1>
+          <p>会員登録フォームのデモです。</p>
+
+          <div class="demo" ng-controller="formController">
+
+            <form role="form" ng-submit="confirm()" ng-show="step==1">
+              <div class="form-group">
+                <label>氏名</label>
+                <input type="text" class="form-control" ng-model="user.name" required>
+              </div>
+              <div class="form-group">
+                <label>郵便番号</label>
+                <input type="text" class="form-control" ng-model="user.zip" ng-change="searchAddress(user.zip)" required>
+              </div>
+              <div class="form-group">
+                <label>住所</label>
+                <input type="text" class="form-control" ng-model="user.address" required>
+              </div>
+              <div class="form-group">
+                <label>会員種別</label>
+                <div class="radio">
+                  <label><input type="radio" name="type" value="kojin" ng-model="user.type" checked required>個人</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="type" value="hojin" ng-model="user.type" required>法人</label>
+                </div>
+              </div>
+              <div class="form-group" ng-show="user.type=='hojin'">
+                法人のお客様はこちらもご記入ください。
+                <div>
+                  <label>法人名</label>
+                  <input type="text" ng-model="user.hojin_name" value="法人名">
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="submit" class="btn btn-default btn-block " value="確認画面へ">
+              </div>
+            </form>
+
+            <div ng-show="step==2">
+              <h2>確認</h2>
+              <table class="table table-bordered" style="width: 400px">
+                <tr>
+                  <th>名前</th>
+                  <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                  <th>郵便番号</th>
+                  <td>{{user.zip}}</td>
+                </tr>
+                <tr>
+                  <th>住所</th>
+                  <td>{{user.address}}</td>
+                </tr>
+                <tr>
+                  <th>会員種別</th>
+                  <td>{{typeStr(user.type)}}</td>
+                </tr>
+                <tr ng-show="user.type=='hojin'">
+                  <th>法人名</th>
+                  <td>{{user.hojin_name}}</td>
+                </tr>
+              </table>
+              <button class="btn btn-default btn-large btn-block" ng-click="finish()">会員登録</button>
+              <button class="btn btn-default btn-large btn-block" ng-click="backToForm()">戻る</button>
+            </div>
+
+            <div ng-show="step==3">
+              <div style="font-size: 30px">会員登録ありがとうございました。</div>
+              <p>このデモはここでおしまいです</p>
+            </div>
+
+          </div>
+
+          <hr />
+
+          <div class="explanation">
+            <h2>解説</h2>
+            <p>ng-model で、各フォーム要素を AngularJS のデータとひもづけています。</p>
+            <p>郵便番号を入力したら、API にアクセスしてデータをとってきます。この際、DOM 操作が一切必要ないというのがよいです。データの操作を行うだけで見た目が調整されているという点が重要です。</p>
+            <p>会員種別の選択を行う際には、法人か個人かを選べますが、法人をえらんだときだけ表示させる項目の制御が ng-show という attribute のみで行えます。</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+Demo
+====
+
+Setup
+-----
+
+    > cd . && npm install
+
+Run
+---
+
+    > node app

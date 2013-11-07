@@ -1,0 +1,15 @@
+<h1>エントリー作成</h1>
+
+<form role="form" ng-submit="save()">
+  <div class="form-group">
+    <label>タイトル</label>
+    <input type="text" ng-model="entry.title">
+  </div>
+  <div class="form-group">
+    <label>本文</label>
+    <textarea ng-model="entry.body" cols="60" rows="7"></textarea>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="保存" class="btn btn-default btn-large btn-block">
+  </div>
+</form>

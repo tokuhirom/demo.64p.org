@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="adminApp">
+  <head>
+    <title>管理画面風デモ - AngularJSのスゴさが伝わるデモ</title>
+    <link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css' />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular-resource.min.js"></script>
+    <script type="text/javascript" src="../javascripts/adminApp.js"></script>
+    <style>
+      .demo {
+        width: 820px;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 4px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="./">Angular Demos</a>
+          </div>
+      </nav>
+
+      <div class="row">
+        <div class="col-md-12">
+        <h1>管理画面風デモ - AngularJSのスゴさが伝わるデモ</h1>
+        <p>以下はごく一般的な管理画面を AngularJS で実装したものです。</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="demo">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="list-group">
+                  <a class="list-group-item" href="#/entry">エントリー</a>
+                  <a class="list-group-item" href="#/user">ユーザー</a>
+                </div>
+              </div>
+              <div class="col-md-8"><div ng-view></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-md-12">
+          <p>ここではサーバーサイドとの絡みをデモしています。サーバー側は NodeJS で実装された API です。</p>
+          <p>ngRoute をつかって、パスによってテンプレートやコントローラをきりかえています。</p>
+          <p>AngularJS でpaginationを行うような本格的なデモは少ないのでよいデモだと思います。</p>
+          <p>書きたいことを書きたいように書けるという、AngularJS の真髄はこのような形式の管理画面でもっとも真価を発揮するのではないでしょうか。</p>
+          <p>データは NodeJS のメモリ上に保管されているだけなので好きなように変更していただいてかまいません</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
